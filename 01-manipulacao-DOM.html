@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulação do DOM</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script>
+        /*
+        DOM (Document Object Model) é a representação dos elementos
+        de uma página HTML em JavaScript. Manipular o DOM significa
+        criar, modificar ou remover elementos da página com JS.
+        */
+
+        // Criar novo parágrafo
+        const paragrafo = document.createElement('p')
+        paragrafo.textContent = 'Parágrafo criado com JavaScript.'
+
+        // Acessar div root
+        const raiz = document.getElementById('root')
+
+        // Adicionar parágrafo à página
+        raiz.appendChild(paragrafo)
+
+        // Criar div estilizada
+        const caixa = document.createElement('div')
+        caixa.textContent = 'DIV criada com JS.'
+        caixa.style.border = '3px dotted green'
+        caixa.style.background = 'limegreen'
+        caixa.style.padding = '10px'
+        caixa.style.marginTop = '50px'
+        caixa.style.textAlign = 'center'
+        caixa.id = 'caixa-verde'
+
+        // Adicionar div à página
+        raiz.appendChild(caixa)
+    </script>
+</body>
+</html>
