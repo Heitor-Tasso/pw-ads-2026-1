@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSX e Babel</title>
+  <style>
+    div.caixa-estilo {
+      font-family: 'Courier New', monospace;
+      color: darkblue;
+      background: aliceblue;
+      text-align: center;
+      margin-bottom: 15px;
+      border: 2px solid darkblue;
+      border-radius: 8px;
+      padding: 10px
+    }
+  </style>
+</head>
+<body>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+    // Elemento em React puro
+    const elem1 = React.createElement(
+      'div',
+      { id: 'elemento1', className: 'caixa-estilo' },
+      'Elemento em React puro'
+    )
+
+    // Elemento em JSX
+    const elem2 = <div id="elemento2" className="caixa-estilo">Elemento em JSX</div>
+
+    // JSX com interpolação
+    const estilo = 'caixa-estilo'
+    const idElem = 'elemento3'
+    const texto = 'Elemento com JSX e interpolação'
+
+    const elem3 = <div id={idElem} className={estilo}>{texto}</div>
+
+    // Props com spread
+    const propsElem4 = {
+      id: 'elemento4',
+      className: 'caixa-estilo',
+      children: 'Elemento com spread de props'
+    }
+
+    const elem4 = <div {...propsElem4} />
+
+    // Componente principal
+    const pagina =
+      <div id="pagina">
+        {elem1} {elem2} {elem3} {elem4}
+      </div>
+
+    // Renderizar
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(pagina)
+  </script>
+</body>
+</html>
