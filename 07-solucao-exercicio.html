@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solução Exercício Prático</title>
+  <style>
+    .perfil-primario {
+      color: darkgreen;
+      font-weight: bold;
+      margin-bottom: 10px;
+      padding: 8px;
+      background: lightgreen;
+      border-radius: 4px;
+    }
+
+    .perfil-secundario {
+      color: darkviolet;
+      font-style: italic;
+      margin-bottom: 10px;
+      padding: 8px;
+      background: plum;
+      border-radius: 4px;
+    }
+
+    .info-idade {
+      background: lightyellow;
+      border: 2px solid orange;
+      padding: 12px;
+      border-radius: 6px;
+      text-align: center;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .container-perfil {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+    /*
+      SOLUÇÃO DO EXERCÍCIO DE FIXAÇÃO #1
+
+      Componente que exibe perfil de pessoa com:
+      - Nome completo
+      - Data de nascimento
+      - Idade estimada para final do ano
+    */
+
+    function CardPerfil({nome, sobrenome, dia, mes, ano}) {
+      const idadeAnoFinal = 2026 - ano
+
+      return (
+        <>
+          <p className="perfil-primario">
+            Nome: {nome} {sobrenome}
+          </p>
+          <p className="perfil-secundario">
+            Nascimento: {dia}/{mes}/{ano}
+          </p>
+          <div className="info-idade">
+            Idade ao final de 2026: {idadeAnoFinal} anos
+          </div>
+        </>
+      )
+    }
+
+    const app = (
+      <div className="container-perfil">
+        <h2>Cadastro de Pessoas</h2>
+        <CardPerfil
+          nome="Maria"
+          sobrenome="Silva"
+          dia="15"
+          mes="06"
+          ano="2008"
+        />
+        <CardPerfil
+          nome="João"
+          sobrenome="Santos"
+          dia="22"
+          mes="11"
+          ano="2007"
+        />
+        <CardPerfil
+          nome="Ana"
+          sobrenome="Costa"
+          dia="08"
+          mes="03"
+          ano="2009"
+        />
+      </div>
+    )
+
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(app)
+  </script>
+</body>
+</html>
