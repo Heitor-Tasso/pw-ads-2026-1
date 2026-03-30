@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Componentes Funcionais</title>
+  <style>
+    .cartao {
+      background: indigo;
+      border-radius: 8px;
+      color: white;
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
+      padding: 12px;
+      text-align: center;
+      font-family: Cambria, serif;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+    /*
+      Componentes em React são funções que retornam JSX.
+      Convenções:
+      - Nome começa com letra MAIÚSCULA (PascalCase)
+      - Recebem props entre {}
+      - Retornam um único elemento (ou Fragment)
+    */
+
+    function Cumprimento({saudacao, pessoa}) {
+      return <div className="cartao"> {saudacao}, {pessoa}! </div>
+    }
+
+    // Usando a função diretamente
+    const comp1 = Cumprimento({ saudacao: 'Olá', pessoa: 'Maria' })
+
+    // Usando sintaxe JSX
+    const comp2 = <Cumprimento pessoa="João" saudacao="Bem-vindo" />
+
+    // Fragment para agrupar múltiplos componentes
+    const pagina =
+      <>
+        {comp1}
+        {comp2}
+      </>
+
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(pagina)
+  </script>
+</body>
+</html>
