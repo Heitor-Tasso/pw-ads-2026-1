@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROVA 1 - React - Programação Web</title>
+    <style>
+        body {
+            /* Deixar a página body dentro da view port e habilitar ela para poder centralizar os childs */
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+
+            /* Centralizar o container */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cor-do-texto-1 {
+            color: RebeccaPurple;
+        }
+
+        .cor-do-texto-2 {
+            color: Teal;
+        }
+
+        .cor-do-texto-3 {
+            color: LightSkyBlue;
+        }
+
+        #root {
+            /* Card com tudo centralizado */
+            padding: 20px;
+            min-width: 400px;
+            width: max-content;
+            height: max-content;
+            text-align: center;
+            box-shadow: slategrey 0px 0px 30px;
+            border-radius: 10px;
+        }
+
+        .produto {
+            /* Deixar os produtos um pouco separados */
+            margin-bottom: 20px;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function Produto({ produto, preco, estoque }) {
+            return (
+                <div className="produto">
+                    <h1 className="cor-do-texto-1">{produto}</h1>
+                    <p className="cor-do-texto-2">R$ {preco.toFixed(2)}</p>
+                    <p className="cor-do-texto-3">Quantidade em estoque: {estoque}</p>
+                </div>
+            )
+        }
+
+        const container = (
+            <>
+                <Produto produto="Caneta" preco={1.23} estoque={1000} />
+                <Produto produto="Garrafa Térmica" preco={93.4} estoque={35} />
+                <Produto produto="Mochila" preco={459.2} estoque={12} />
+            </>
+        )
+
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        root.render(container)
+
+        /*
+        Para facilitar, coloquei 3 classes css bem simples dentro da tag style, com nomes em português auto-explicativos.
+        Dai foi só criar o componente produto com os 3 textos que iriam serem atribuídos a cada classe, e depois definir dentro de cada um, as variáveis que eles teriam.
+        Por fim, com o componente criado, só tive qu criar 3 produtos testes para poder renderizar na página web.
+        Todo o restante foi igual às aulas, sobre a estrutura de renderização, importação do react, etc.
+        Como sobrou tempo, ai só melhorei manualmente um pouco a estilização do container e do produto para ficar melhor de ver. Mas para isso precisei adicionar um className no produto e uma div.
+        */
+    </script>
+</body>
+
+</html>
