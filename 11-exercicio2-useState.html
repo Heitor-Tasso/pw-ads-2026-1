@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cálculo da área de uma elipse</title>
+</head>
+<body>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+    function App() {
+      const [raioMaior, setRaioMaior] = React.useState('')
+      const [raioMenor, setRaioMenor] = React.useState('')
+      const [alterado, setAlterado] = React.useState(false)
+
+      const area = Number(raioMaior) * Number(raioMenor) * Math.PI
+      const areaFormatada = area.toLocaleString('pt-br', {
+        minimumFractionDigits: 4,
+        maximumFractionDigits: 4
+      })
+
+      function handleRaioMaiorChange(event) {
+        setRaioMaior(event.target.value)
+        setAlterado(true)
+      }
+
+      function handleRaioMenorChange(event) {
+        setRaioMenor(event.target.value)
+        setAlterado(true)
+      }
+
+      return <>
+        <h1>Cálculo da área de uma elipse</h1>
+        <form>
+          <div>
+            <label>
+              <span>Medida do raio maior:</span><br />
+              <input type="number" value={raioMaior} onChange={handleRaioMaiorChange} />
+            </label>
+          </div>
+          <div>
+            <label>
+              <span>Medida do raio menor:</span><br />
+              <input type="number" value={raioMenor} onChange={handleRaioMenorChange} />
+            </label>
+          </div>
+          <div>{alterado ? `Área: ${areaFormatada}` : ''}</div>
+        </form>
+      </>
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(<App />)
+  </script>
+
+</body>
+</html>
